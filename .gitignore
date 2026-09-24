@@ -1,0 +1,51 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Local settings, secrets, and OS files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.ses
+
+# Downloaded repositories and model weights
+external/
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Private, author-created Lightroom presets (kept locally)
+*.[xX][mM][pP]
+
+# Keep the saved research snapshot; ignore new output directories by default
+/outputs/*
+!/outputs/.gitkeep
+!/outputs/01_binary/
+!/outputs/02_deeplab/
+!/outputs/03_segformer/
+!/outputs/04_maskrcnn/
+!/outputs/05_mask2former/
+!/outputs/06_birefnet/
+!/outputs/07_human/
+!/outputs/08_modnet/
+!/outputs/09_sam2_prompt/
+!/outputs/comparison/
+/color_subject_streak/output/*
+!/color_subject_streak/output/.gitkeep
+!/color_subject_streak/output/photo_color_streak.jpg
+/preset_testing/outputs/*
+!/preset_testing/outputs/photo__studio.jpg
