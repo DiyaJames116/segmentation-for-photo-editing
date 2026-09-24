@@ -1,44 +1,32 @@
-# Reproducibility and repository notes
+# Reproducibility
 
-## What is preserved
+## Scope of the saved results
 
-The repository includes the existing example photographs and saved results. The main contact sheet contains nine approaches; there is no saved SAM 2 automatic result. Result files alone do not establish which dependency versions, hardware, or exact checkpoint revisions produced them.
+The repository includes example photographs and saved outputs for nine approaches. No SAM 2 automatic result is included. The experiments use pretrained inference without fine-tuning.
 
-The code uses pretrained inference without fine-tuning. Requirements specify minimum versions. A future run can differ if dependencies, default weights, or hub model code change.
+The saved outputs do not include an environment lockfile, hardware log, or exact checkpoint revisions. Dependencies use minimum-version constraints, and model weights are downloaded from upstream sources. Changes to dependencies, default weights, or model code may affect subsequent results.
 
-## Recording a new experiment
+## Running an experiment
 
-Run experiment commands from the `segmentation-for-photo-editing/` project folder inside the repository. Paths such as `outputs/` below are relative to that folder.
+Follow the installation instructions in the [README](../README.md). Run model and editing commands from the `segmentation-for-photo-editing/` project folder; paths below are relative to that folder.
 
-1. Move existing `outputs/` elsewhere before using a different input. The runner and contact-sheet builder reuse paths and do not remove stale results.
-2. Record the input filename and checksum, selected model IDs, and any SAM point coordinates.
-3. Record Python, installed packages (`python -m pip freeze`), OS, hardware, and device. Keep environment records with that experiment rather than claiming they describe the saved examples.
-4. Record checkpoint revisions, preprocessing, failures, elapsed time, and any manual changes.
-5. Inspect masks at full resolution alongside composites. Use labelled reference masks and a documented evaluation protocol before reporting accuracy.
+1. Archive the existing `outputs/` directory before changing the input image. The runner reuses output paths, and the comparison builder includes all available model folders, including results from earlier runs.
+2. Record the input filename and checksum, selected model IDs, and SAM point coordinates where applicable.
+3. Record Python and package versions (`python -m pip freeze`), operating system, hardware, and inference device for each run.
+4. Record checkpoint revisions, preprocessing, failures, elapsed time, and manual changes.
+5. Inspect full-resolution masks alongside composites. Quantitative evaluation requires labelled reference masks and a documented evaluation protocol.
 
-The existing effect tests exercise compositing, options, image handling, and mocked integration. They do not evaluate pretrained model accuracy.
+## Tests
+
+The effect tests cover compositing, option validation, image handling, and mocked integration. They do not measure pretrained model accuracy.
+
+With the project environment activated, run from the repository root:
 
 ```bash
-# From the repository root
 cd segmentation-for-photo-editing/color_subject_streak
-../.venv/bin/python -m unittest discover -s tests -v
+python -m unittest discover -s tests -v
 ```
 
-## Push to GitHub
+## Preset experiment
 
-From the repository root, after creating an empty GitHub repository:
-
-```bash
-git init -b main
-git add .
-git status --short
-git commit -m "Add segmentation research prototype and qualitative results"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git push -u origin main
-```
-
-Replace the remote URL with your repository URL. If Git is already initialized, skip `git init`; if `origin` already exists, use its configured URL instead of adding it again.
-
-The ignore rules keep virtual environments, caches, local secrets, external checkouts, and model weights out of the upload. Existing result folders and README images are explicitly included; other generated output directories are ignored. Original files remain in place.
-
-Original code and documentation are licensed under MIT. The author-created Lightroom XMP presets are private and excluded from uploads; supply your own XMP file to run the preset renderer.
+The example Lightroom presets are not distributed. The XMP renderer accepts a user-supplied preset; reproducing the exact saved preset result requires the original preset. See the [preset guide](../segmentation-for-photo-editing/preset_testing/README.md).

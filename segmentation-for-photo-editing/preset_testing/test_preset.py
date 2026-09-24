@@ -81,7 +81,7 @@ def parse_xmp(xmp_path: str | Path):
 
         # Most Lightroom controls are attributes, but some XMP producers write
         # a scalar setting as a CRS element instead.  Preserve those too so an
-        # uploaded XMP is not silently reduced to its attributes.
+        # input XMP is not silently reduced to its attributes.
         clean_tag = strip_namespace(element.tag)
         if (
             element.tag.startswith("{" + CRS_NS + "}")

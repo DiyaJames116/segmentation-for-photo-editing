@@ -57,7 +57,7 @@ Model 10 can include background regions: its union is not a person-specific cuto
 
 ## Run locally
 
-The runnable project lives in the `segmentation-for-photo-editing/` folder. After cloning or downloading this repository, open a terminal at the repository root and enter that folder first. Run all remaining model and editing commands from inside it. The existing local environment uses Python 3.11; dependencies are specified as minimum versions, not a locked environment.
+The runnable project lives in the `segmentation-for-photo-editing/` folder. After cloning or downloading this repository, open a terminal at the repository root and enter that folder first. Run all remaining model and editing commands from inside it. Use Python 3.11 for the documented setup. Dependencies are specified as minimum versions, not a locked environment.
 
 ```bash
 # From the repository root, enter the runnable project folder
@@ -92,7 +92,7 @@ Each adapter runs independently; failures are printed and the remaining models c
 
 ### Optional SAM 2 installation
 
-The SAM adapters require Meta's separate `sam2` package. The `external/` checkout is excluded from Git.
+The SAM adapters require Meta's separate `sam2` package.
 
 ```bash
 git clone https://github.com/facebookresearch/sam2.git external/sam2

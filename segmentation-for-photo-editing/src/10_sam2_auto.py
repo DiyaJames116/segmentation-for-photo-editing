@@ -10,7 +10,7 @@ from .common import ensure_dir, save_mask
 
 SAM_REPO = "facebook/sam2.1-hiera-small"
 
-# Hydra config bundled with your cloned SAM2 package
+# Hydra configuration bundled with the installed SAM2 package
 CONFIG_NAME = "configs/sam2.1/sam2.1_hiera_s.yaml"
 
 # Actual model weights downloaded from Hugging Face

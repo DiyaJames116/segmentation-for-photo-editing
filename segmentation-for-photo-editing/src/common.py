@@ -53,9 +53,7 @@ def save_studio(image, mask, path, bg=NAVY):
     fg = image.convert("RGBA")
     fg.putalpha(mask)
     out = Image.alpha_composite(background, fg)
-    # JPEG has no alpha channel.  The previous version attempted to write this
-    # RGBA image directly, which stopped every model after its mask/cutout had
-    # already been created.
+    # Flatten the composite for JPEG, which does not support an alpha channel.
     if Path(path).suffix.lower() in {".jpg", ".jpeg"}:
         out = out.convert("RGB")
     out.save(path, quality=95)
