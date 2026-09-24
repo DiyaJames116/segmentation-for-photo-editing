@@ -18,7 +18,7 @@ The practical focus is on hair and clothing boundaries, retained accessories, ba
 
 The saved comparison below contains **nine model outputs**. A tenth adapter, SAM 2 automatic segmentation, is implemented but has no saved result in this snapshot.
 
-![Nine saved model outputs composited onto a navy background](outputs/comparison/comparison.jpg)
+![Nine saved model outputs composited onto a navy background](segmentation-for-photo-editing/outputs/comparison/comparison.jpg)
 
 _Left to right, top to bottom: U²-Net, DeepLabV3, SegFormer, Mask R-CNN, Mask2Former, BiRefNet, human parser, MODNet, and point-prompted SAM 2.1. These are saved exploratory results, not a scored benchmark._
 
@@ -26,9 +26,9 @@ _Left to right, top to bottom: U²-Net, DeepLabV3, SegFormer, Mask R-CNN, Mask2F
 
 |           Input photograph           |                       BiRefNet mask                       |                  BiRefNet studio composite                   |
 | :----------------------------------: | :-------------------------------------------------------: | :----------------------------------------------------------: |
-| ![Input photograph](input/photo.jpg) | ![BiRefNet foreground mask](outputs/06_birefnet/mask.png) | ![BiRefNet studio composite](outputs/06_birefnet/studio.jpg) |
+| ![Input photograph](segmentation-for-photo-editing/input/photo.jpg) | ![BiRefNet foreground mask](segmentation-for-photo-editing/outputs/06_birefnet/mask.png) | ![BiRefNet studio composite](segmentation-for-photo-editing/outputs/06_birefnet/studio.jpg) |
 
-The [complete output folders](outputs/) also contain transparent cutouts, individual person masks, human-part visualizations, and the MODNet alpha matte.
+The [complete output folders](segmentation-for-photo-editing/outputs/) also contain transparent cutouts, individual person masks, human-part visualizations, and the MODNet alpha matte.
 
 ### What this example illustrates
 
@@ -57,9 +57,12 @@ Model 10 can include background regions: its union is not a person-specific cuto
 
 ## Run locally
 
-Run commands from the repository root. The existing local environment uses Python 3.11; dependencies are specified as minimum versions, not a locked environment.
+The runnable project lives in the `segmentation-for-photo-editing/` folder. After cloning or downloading this repository, open a terminal at the repository root and enter that folder first. Run all remaining model and editing commands from inside it. The existing local environment uses Python 3.11; dependencies are specified as minimum versions, not a locked environment.
 
 ```bash
+# From the repository root, enter the runnable project folder
+cd segmentation-for-photo-editing
+
 python -m venv .venv
 source .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
@@ -120,14 +123,14 @@ python run_all.py --only 9 --sam-point 0.5,0.45
 
 The effect uses a BiRefNet mask to preserve the subject's colour while converting and directionally blurring the background. Blur samples exclude foreground pixels to limit subject streaks.
 
-![Saved colour-subject effect](color_subject_streak/output/photo_color_streak.jpg)
+![Saved colour-subject effect](segmentation-for-photo-editing/color_subject_streak/output/photo_color_streak.jpg)
 
 ```bash
 python -m pip install -r color_subject_streak/requirements.txt
 python color_subject_streak/run_effect.py --image input/photo.jpg --blur 0.08 --angle -25
 ```
 
-An existing mask can be supplied with `--mask` to tune the effect without repeating inference. See the [effect guide](color_subject_streak/README.md) for options, supported formats, and tests.
+An existing mask can be supplied with `--mask` to tune the effect without repeating inference. See the [effect guide](segmentation-for-photo-editing/color_subject_streak/README.md) for options, supported formats, and tests.
 
 ### XMP preset rendering
 
@@ -135,24 +138,28 @@ A separate experiment interprets XMP settings using Python image operations. It 
 
 The Lightroom presets used for the saved examples were created by the project author and are kept private. Their XMP files are excluded from this repository; the renderer and example result images are shared. To run the experiment, supply your own exported Lightroom XMP preset.
 
-![Saved XMP studio preset result](preset_testing/outputs/photo__studio.jpg)
+![Saved XMP studio preset result](segmentation-for-photo-editing/preset_testing/outputs/photo__studio.jpg)
 
-See the [preset guide](preset_testing/README.md) for commands and scope. This is a separate editing example, not a segmentation benchmark result.
+See the [preset guide](segmentation-for-photo-editing/preset_testing/README.md) for commands and scope. This is a separate editing example, not a segmentation benchmark result.
 
 ## Repository layout
 
 ```text
-.
-├── run_all.py                 # Model selection and independent execution
-├── compare.py                 # Contact sheet from existing outputs
-├── src/                       # Model adapters and shared image utilities
-├── input/                     # Example photographs
-├── outputs/                   # Saved masks, cutouts, composites, comparison
-├── color_subject_streak/       # Segmentation-guided selective colour effect
-├── preset_testing/            # XMP renderer and example results; presets private
-├── requirements.txt           # Inference dependencies
-└── docs/
-    └── REPRODUCIBILITY.md      # Evaluation notes and publishing instructions
+repository-root/
+├── README.md
+├── LICENSE
+├── docs/
+│   └── REPRODUCIBILITY.md
+└── segmentation-for-photo-editing/   # Open this folder to run the project
+    ├── run_all.py                    # Model selection and execution
+    ├── compare.py                    # Contact sheet from existing outputs
+    ├── run.sh / run.bat              # Convenience launchers
+    ├── requirements.txt
+    ├── src/                          # Model adapters and shared utilities
+    ├── input/                        # Example photographs
+    ├── outputs/                      # Saved masks, cutouts, and comparisons
+    ├── color_subject_streak/         # Selective colour effect
+    └── preset_testing/               # XMP renderer; private presets excluded
 ```
 
 ## Limitations and next steps

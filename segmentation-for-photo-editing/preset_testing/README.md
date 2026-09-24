@@ -4,7 +4,7 @@ This standalone photo-editing experiment reads Lightroom / Camera Raw XMP settin
 
 The Lightroom presets used for the saved example were created by the project author and are kept private. Their XMP files are excluded from Git uploads and are not included under the repository's MIT license. The renderer and example output remain available.
 
-Export your own Lightroom preset as an XMP file, then run from the repository root after installing `requirements.txt`. Replace `path/to/your-preset.xmp` with your file's path:
+Export your own Lightroom preset as an XMP file, then run from inside the `segmentation-for-photo-editing/` project folder after installing `requirements.txt`. Replace `path/to/your-preset.xmp` with your file's path:
 
 ```bash
 python preset_testing/test_preset.py --image preset_testing/input/photo.jpg --preset path/to/your-preset.xmp

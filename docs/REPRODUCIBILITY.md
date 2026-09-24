@@ -8,6 +8,8 @@ The code uses pretrained inference without fine-tuning. Requirements specify min
 
 ## Recording a new experiment
 
+Run experiment commands from the `segmentation-for-photo-editing/` project folder inside the repository. Paths such as `outputs/` below are relative to that folder.
+
 1. Move existing `outputs/` elsewhere before using a different input. The runner and contact-sheet builder reuse paths and do not remove stale results.
 2. Record the input filename and checksum, selected model IDs, and any SAM point coordinates.
 3. Record Python, installed packages (`python -m pip freeze`), OS, hardware, and device. Keep environment records with that experiment rather than claiming they describe the saved examples.
@@ -17,7 +19,8 @@ The code uses pretrained inference without fine-tuning. Requirements specify min
 The existing effect tests exercise compositing, options, image handling, and mocked integration. They do not evaluate pretrained model accuracy.
 
 ```bash
-cd color_subject_streak
+# From the repository root
+cd segmentation-for-photo-editing/color_subject_streak
 ../.venv/bin/python -m unittest discover -s tests -v
 ```
 

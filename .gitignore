@@ -32,20 +32,20 @@ models/
 *.[xX][mM][pP]
 
 # Keep the saved research snapshot; ignore new output directories by default
-/outputs/*
-!/outputs/.gitkeep
-!/outputs/01_binary/
-!/outputs/02_deeplab/
-!/outputs/03_segformer/
-!/outputs/04_maskrcnn/
-!/outputs/05_mask2former/
-!/outputs/06_birefnet/
-!/outputs/07_human/
-!/outputs/08_modnet/
-!/outputs/09_sam2_prompt/
-!/outputs/comparison/
-/color_subject_streak/output/*
-!/color_subject_streak/output/.gitkeep
-!/color_subject_streak/output/photo_color_streak.jpg
-/preset_testing/outputs/*
-!/preset_testing/outputs/photo__studio.jpg
+/segmentation-for-photo-editing/outputs/*
+!/segmentation-for-photo-editing/outputs/.gitkeep
+!/segmentation-for-photo-editing/outputs/01_binary/
+!/segmentation-for-photo-editing/outputs/02_deeplab/
+!/segmentation-for-photo-editing/outputs/03_segformer/
+!/segmentation-for-photo-editing/outputs/04_maskrcnn/
+!/segmentation-for-photo-editing/outputs/05_mask2former/
+!/segmentation-for-photo-editing/outputs/06_birefnet/
+!/segmentation-for-photo-editing/outputs/07_human/
+!/segmentation-for-photo-editing/outputs/08_modnet/
+!/segmentation-for-photo-editing/outputs/09_sam2_prompt/
+!/segmentation-for-photo-editing/outputs/comparison/
+/segmentation-for-photo-editing/color_subject_streak/output/*
+!/segmentation-for-photo-editing/color_subject_streak/output/.gitkeep
+!/segmentation-for-photo-editing/color_subject_streak/output/photo_color_streak.jpg
+/segmentation-for-photo-editing/preset_testing/outputs/*
+!/segmentation-for-photo-editing/preset_testing/outputs/photo__studio.jpg

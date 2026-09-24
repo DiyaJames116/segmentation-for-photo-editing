@@ -8,7 +8,7 @@ detail. No XMP preset is applied.
 ## Run in Terminal
 
 ```bash
-# From the repository root
+# From inside the segmentation-for-photo-editing project folder
 source .venv/bin/activate
 python color_subject_streak/run_effect.py --image input/photo.jpg
 ```
@@ -62,7 +62,7 @@ The effect uses an 8-bit RGB workflow, without HDR or ICC-profile conversion.
 
 ## Tests
 
-From `Model_Choosing`:
+From inside the `segmentation-for-photo-editing/` project folder:
 
 ```bash
 cd color_subject_streak
